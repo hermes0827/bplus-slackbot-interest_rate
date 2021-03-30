@@ -1,7 +1,11 @@
 import json
 import requests
+import os
 from pandas import json_normalize
 import read
+from boto.s3.connection import S3Connection
+
+s3 = S3Connection(os.environ['slack_token'], os.environ['channel_id'])
 
 json_slack_path = "./token.json"
 with open(json_slack_path, 'r') as json_file:
@@ -26,3 +30,5 @@ URL = "https://slack.com/api/chat.postMessage"
 res = requests.post(URL, data=data)
 
 print(read.read_interest_rate())
+
+pritn(s3)
